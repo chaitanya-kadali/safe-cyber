@@ -5,7 +5,6 @@ import AiChatBot from "./components/Hero comps/AiChatBot.jsx";
 import AboutUs from "./components/Separate Comps/AboutUs.jsx";
 import Header from "./components/Header.jsx";
 import Register from "./components/Register.jsx";
-import Rough from "./components/Rough.jsx";
 import YourProfile from "./components/YourProfie.jsx";
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
               </div>
             }
           />
-          <Route path="/rough" element={<Rough />} />
         </Routes>
       </BrowserRouter>
     </>
