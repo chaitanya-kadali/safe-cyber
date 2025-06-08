@@ -1,0 +1,43 @@
+user {
+   name : String
+   email : String
+   password : String
+   
+  violated_count: int   // backend only (if count )
+  banned_time : time   -->isbanned (time -present_time == 2 days)
+  chats:[ chat_ids ]
+} 
+
+// Schema for both fakenews and scam 
+
+fakenews {
+   headline: String,
+   tcontent: String
+}
+
+
+collection : messagedata
+docs -> {
+chat_id : 1,
+chat_name:"",
+sentemail : "email",
+sentname: "name",
+time: time,
+mdata:""
+}
+
+collection : chatinfo
+{
+   chat_id
+   chat_name
+   praticipants :["ramsai","deva"]
+
+}
+
+
+/create-new-chat
+
+
+/getmetachats
+
+chatid->name,paticipants
