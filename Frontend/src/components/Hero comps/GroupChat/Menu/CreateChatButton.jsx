@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Box, Button, Fab, Menu, MenuItem, Modal, TextField, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { backURL } from "../../../../utils/forall";
+import axios from 'axios';
 
 const CreateChatButton = ({ email }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [isGroup, setIsGroup] = useState(false);
     const [emails, setEmails] = useState([""]);
+    const [chatName , setChatName] = useState("");
     
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -33,21 +35,21 @@ const CreateChatButton = ({ email }) => {
         newEmails[index] = value;
         setEmails(newEmails);
     };
+    const handleChatName = (value) => {
+        setChatName(value);
+    };
 
     const handleSubmit = async () => {
+        setEmails([...emails, email]); // adding creator-email too
         const payload = {
-            creator: email,
-            emails: emails,
+            chat_name :chatName,
+            participants : emails, // array
         };
 
         try{
-            await axios.post(`${backURL}/api/`,payload).then(res=>{
+            await axios.post(`${backURL}/api/create-new-chat`,payload).then(res=>{
                if(res.data.success){
-                   
-               console.log("conversation.jsx : const messages -> ",res.data.msgs)
-           
-           
-            setMessage(res.data.msgs)
+               console.log("conversation.jsx : const messages -> ",res.data.message)
                }else{
                  alert("Error : to retrieve getmsg");
                }
@@ -56,7 +58,7 @@ const CreateChatButton = ({ email }) => {
          catch(error){
              console.log('Error sending registration request',error);
          }
-
+         setEmails([""])
     };
 
     return (
@@ -78,6 +80,15 @@ const CreateChatButton = ({ email }) => {
                     <Typography variant="h6" sx={styles.title}>
                         {isGroup ? "Create a Group" : "Create a Personal Chat"}
                     </Typography>
+
+                    <TextField
+                            label="Enter Chat Name"
+                            variant="outlined"
+                            fullWidth
+                            margin="normal"
+                            value={chatName}
+                            onChange={(e) => handleChatName(e.target.value)}
+                        />
 
                     {emails.map((email, index) => (
                         <TextField

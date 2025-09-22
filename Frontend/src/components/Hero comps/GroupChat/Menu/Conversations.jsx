@@ -37,7 +37,7 @@ const Conversations = (props) => {  // once text
             // let fiteredData = data.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
             // setUsers(fiteredData);
             try{
-                 await axios.post(`${backURL}/api/getuinfo`,{email: props.email}).then(res=>{
+                 await axios.post(`${backURL}/api/get-chat-meta`,{email: props.email}).then(res=>{
                     if(res.data.success){
                                
                     // setUser(res.data.data);
