@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TrendInput from "./TrendInput";
 import axios from "axios";
+import { backURL } from "../../utils/forall";
 
 export default function ScamTrend() {
   const [data, setData] = useState([]);
@@ -8,7 +9,7 @@ export default function ScamTrend() {
   const fetchData = async () => { 
     try {
       setLoading(true); // Ensure loading state is handled
-      const response = await axios.get("https://safecyber-api.onrender.com/api/tscam-list");
+      const response = await axios.get(`${backURL}/api/tscam-list`);
       setData(response.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -25,7 +26,7 @@ export default function ScamTrend() {
     console.log("Button clicked for item with ID:", heading);
     try {
       let response = await axios.post(
-        "https://safecyber-api.onrender.com/api/happened-to-me",
+        `${backURL}/api/happened-to-me`,
         { headline: heading}
       );
       if (response.data.success) {

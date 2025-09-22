@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Box, Typography, Button, TextField, Card, CardMedia, CardContent, Avatar, Paper } from "@mui/material";
 import { styled } from "@mui/system";
 import axios from "axios";
+import { backURL } from "../../utils/forall";
 // CSS-in-JS Variables
 const styles = {
     pageBackground: "#121212",
@@ -81,7 +82,7 @@ export default function SocialMedia({email}) {
     const getYourPosts = async() => {
            
       try{
-          await axios.post('https://safecyber-api.onrender.com/api/get-image-post',{image}).then(res=>{
+          await axios.post(`${backURL}/api/get-image-post`,{image}).then(res=>{
              if(res.data.success){
                  
              console.log("conversation.jsx : const messages -> ",res.data.msgs)
@@ -107,7 +108,7 @@ export default function SocialMedia({email}) {
         formData.append("matter", text);
         formData.append("email", email);
  
-        const response = await axios.post("https://safecyber-api.onrender.com/api/upload-image-post",
+        const response = await axios.post(`${backURL}/api/upload-image-post`,
           formData,
           { headers: { "Content-Type": "multipart/form-data" } } // re-checkkkk Ensure correct headers
         );
@@ -126,7 +127,7 @@ export default function SocialMedia({email}) {
   const handlePublic = async () => {
     setComp(1);
     try {
-      const response = await axios.post("https://safecyber-api.onrender.com/api/get-all-posts");
+      const response = await axios.post(`${backURL}/api/get-all-posts`);
 
       console.log(response.data.images);
       
@@ -148,7 +149,7 @@ export default function SocialMedia({email}) {
    const handleProfile =async ()=>{
     setComp(2);
     try {
-      const response = await axios.post("https://safecyber-api.onrender.com/api/get-image-post", {
+      const response = await axios.post(`${backURL}/api/get-image-post`, {
         email: email, // Send email in request body
       });
 

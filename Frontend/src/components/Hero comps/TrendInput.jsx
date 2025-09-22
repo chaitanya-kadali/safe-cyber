@@ -1,6 +1,7 @@
 import React, { useState , useRef} from "react";
 import { Dialog, Snackbar,TextField } from "@mui/material";
 import axios from "axios";
+import { backURL } from "../../utils/forall";
 
 function TrendInput(props) {
   const [isdailog, setisdailog] = useState(false);
@@ -17,9 +18,9 @@ function TrendInput(props) {
     // Select endpoint based on the category
     let endpoint = "";
     if (props.catgry === "news") {
-      endpoint = "https://safecyber-api.onrender.com/api/tfake-create";
+      endpoint = `${backURL}/api/tfake-create`;
     } else if (props.catgry === "scams") {
-      endpoint = "https://safecyber-api.onrender.com/api/tscam-create";
+      endpoint = `${backURL}/api/tscam-create`;
     }
 
     try {

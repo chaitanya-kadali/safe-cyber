@@ -1,6 +1,7 @@
 import { useState } from "react";
 import '../styles/Text.css';
 import axios from "axios";
+import { backURL } from "../../utils/forall";
 const Text =()=>{
     const [tdata,setData]=useState("");
     const [sdata,setSdata]=useState("data is a data of the dt ain the data also the data at the date and in the inof of the data is the data");
@@ -12,7 +13,7 @@ const Text =()=>{
         try{
 
         const response = await fetch(
-          "https://safecyber-api.onrender.com/api/contsensor-text",
+          `${backURL}/api/contsensor-text`,
           {
             method: "POST",
             headers: {

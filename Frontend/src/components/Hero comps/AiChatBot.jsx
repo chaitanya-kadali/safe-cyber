@@ -9,6 +9,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import { backURL } from "../../utils/forall";
 
 const systemMessage = {
   role: "system",
@@ -59,7 +60,7 @@ function AiChatBot() {
 
     try {
       const response = await fetch(
-        "https://safecyber-api.onrender.com/api/chat",
+        `${backURL}/api/chat`,
         {
           method: "POST",
           headers: {

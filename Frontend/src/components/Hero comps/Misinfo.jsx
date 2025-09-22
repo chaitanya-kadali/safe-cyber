@@ -1,6 +1,7 @@
 import "../styles/Misinfo.css";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure to import axios for the API call
+import { backURL } from "../../utils/forall";
 
 function Misinfo() {
   const [inputValue, setInputValue] = useState("");
@@ -38,7 +39,7 @@ function Misinfo() {
     try {
       // Send input data to the '/chat' endpoint
       let response = await axios.post(
-        "https://safecyber-api.onrender.com/api/fact-check",
+        `${backURL}/api/fact-check`,
         {
           newsContent: inputValue,
         }

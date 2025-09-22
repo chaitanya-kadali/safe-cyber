@@ -5,6 +5,7 @@ import Header from "./Header";
 import React,{ useState,useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { backURL } from "../utils/forall";
 
 
 function Login(){
@@ -39,7 +40,7 @@ function Login(){
           alert('password must contain 6 letters');
        }
       try{
-         await axios.post('https://safecyber-api.onrender.com/api/user-sign-in',user).then(res=>{
+         await axios.post(`${backURL}/api/user-sign-in`,user).then(res=>{
             if(res.data.success){
             alert("login Succesfully!");
                   console.log(res.data.message);// without window.location.href = '/home2'; this console.log is worked sucessfully

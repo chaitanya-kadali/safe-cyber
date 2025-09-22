@@ -6,6 +6,7 @@ import axios from "axios";
 //components
 import Message from "./Message";
 import Footer from "./Footer";
+import { backURL } from "../../../utils/forall";
 
 const Wrapper = styled(Box)`
   background-image: url(${"https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"});
@@ -57,7 +58,7 @@ const Messages = ({email, clickedchatId}) => {
     const getConversationMessage = async() => {
       console.log("get convo is colled msg.jsx ---------------------------");
    try{
-       await axios.post('https://safecyber-api.onrender.com/api/getmsg',{chat_id: clickedchatId}).then(res=>{
+       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedchatId}).then(res=>{
           if(res.data.success){
             // console.log("conversation.jsx : const messages -> ",res.data.msgs)
             setallMsgsofChat(res.data.msgs)
@@ -78,7 +79,7 @@ useEffect(() => {
 
 const censorText =async(text)=>{
   try{
-      const response = await fetch("https://safecyber-api.onrender.com/api/contsensor-text",
+      const response = await fetch(`${backURL}/api/contsensor-text`,
                                     {
                                       method: "POST",
                                       headers: {
@@ -132,7 +133,7 @@ const sendText = async (e) => {
             // socket.current.emit("sendMessage", message);
         const postMsg = async() => {
                 try{
-                    await axios.post('https://safecyber-api.onrender.com/api/pushmsg',message).then(res=>{
+                    await axios.post(`${backURL}/api/pushmsg`,message).then(res=>{
                         if(res.data.success){
                         console.log("successfully pushed/uploaded the msg");
                         }else{

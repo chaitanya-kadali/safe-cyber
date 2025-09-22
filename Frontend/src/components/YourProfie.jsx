@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./styles/YourProfile.css";
 import Header from "./Header";
+import { backURL } from "../utils/forall";
 const YourProfile = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -20,7 +21,7 @@ const YourProfile = () => {
   useEffect(() => {
     // const fetchProfileImage = () => {
     if (email) {
-      fetch(`https://safecyber-api.onrender.com/api/get-profile-image?email=${email}`, {
+      fetch(`${backURL}/api/get-profile-image?email=${email}`, {
         method: "GET",
       })
         .then((response) => response.blob())
@@ -46,7 +47,7 @@ const YourProfile = () => {
     formData.append("email", email); 
     formData.append("profile_image", selectedFile);
 
-    fetch("https://safecyber-api.onrender.com/api/upload-profile-image", {
+    fetch(`${backURL}/api/upload-profile-image`, {
       method: "POST",
       body: formData,
     })

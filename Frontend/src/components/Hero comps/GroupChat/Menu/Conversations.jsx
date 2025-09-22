@@ -6,6 +6,7 @@ import axios from 'axios';
 //components
 import Conversation from './Conversation';
 import CreateChatButton from './CreateChatButton';
+import { backURL } from '../../../../utils/forall';
 // import { getUsers } from '../../../service/api';
 
 const Component = styled(Box)`
@@ -36,7 +37,7 @@ const Conversations = (props) => {  // once text
             // let fiteredData = data.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
             // setUsers(fiteredData);
             try{
-                 await axios.post('https://safecyber-api.onrender.com/api/getuinfo',{email: props.email}).then(res=>{
+                 await axios.post(`${backURL}/api/getuinfo`,{email: props.email}).then(res=>{
                     if(res.data.success){
                                
                     // setUser(res.data.data);

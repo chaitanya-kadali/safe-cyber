@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TrendInput from "./TrendInput";
 import axios from "axios";
+import { backURL } from "../../utils/forall";
 
 export default function NewsTrend() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://safecyber-api.onrender.com/api/tscam-list");
+      const response = await axios.get(`${backURL}/api/tscam-list`);
       setData(response.data.data);
 
     } catch (error) {
@@ -23,7 +24,7 @@ export default function NewsTrend() {
     console.log("Button clicked for item with ID:", heading);
     try {
       let response = await axios.post(
-        " https://safecyber-api.onrender.com/api/noticed-it",
+        `${backURL}/api/noticed-it`,
         { headline: heading }
       );
       if (response.data.success) {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { AttachFile } from "@mui/icons-material";
 import { styled } from "@mui/material";
 import { useState, useEffect } from "react";
+import { backURL } from "../../utils/forall";
 
 const ClipIcon = styled(AttachFile)`
   height: 40px;,
@@ -20,7 +21,7 @@ const Media = () => {
       const data = new FormData();
       data.append("image", file);
       const response = await axios.post(
-        "https://safecyber-api.onrender.com/api/contsensor-image",
+        `${backURL}/api/contsensor-image`,
         data,
         { headers: { "Content-Type": "multipart/form-data" } } // Ensure correct headers
       );
@@ -63,7 +64,7 @@ const Media = () => {
   // const handleSubmit = async () => {
   //   try {
   //     const response = await axios.post(
-  //       "https://safecyber-api.onrender.com/api/contsensor-text",
+  //       `${backURL}/api/contsensor-text`,
   //       { text: tdata } // Send as JSON object
   //     );
   //     if (response.data.success) {

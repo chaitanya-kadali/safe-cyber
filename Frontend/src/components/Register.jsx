@@ -3,6 +3,7 @@ import React,{ useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from "./Header";
+import { backURL } from "../utils/forall";
 
 function Register(){
   const [user, setUser] = useState({
@@ -38,7 +39,7 @@ const gologin = ()=>{
         alert('password must contain 8 letters');
      }
     try{
-        axios.post('https://safecyber-api.onrender.com/api/user-sign-up',user).then(res=>{
+        axios.post(`${backURL}/api/user-sign-up`,user).then(res=>{
                 alert("registered Succesfully!");
                setUser({name:"",email:"",password:""});
 
