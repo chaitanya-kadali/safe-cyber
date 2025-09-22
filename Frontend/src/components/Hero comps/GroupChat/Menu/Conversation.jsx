@@ -59,7 +59,7 @@ const Conversation = (props) => {  // once user
             </Box>
             <Box style={{width: '100%'}}>
                 <Container>
-                    <Typography>{ `chat id : ${props.chat_id}`  }</Typography>
+                    <Typography>{ `${props.chat_name}`  }</Typography>
                     { 
                         // <Timestamp>
                         //     {formatDate( message.length > 0 ? message[message.length - 1].time : "")}

@@ -46,19 +46,27 @@ exports.createChat = catchAsyncErrors(async (req, res) => {
 
   exports.getMetaChats=catchAsyncErrors(async(req,res)=>{
 
-    const {chat_id}=req.body;
-    try{
+    const {email}=req.body;
+   try {
+    // Find all chat objects where participants array contains the given email
+    const meta_chat_info = await metachats.find({ participants: email }); // automatically serches in array
 
-        const meta_chat_info=await metachats.findOne({chat_id});
-
-        if(!meta_chat_info){
-            return res.status(201).json({success:false,message:"no meta available for this chat"});
-        }
-        
-        return res.status(202).json({success:true,message:"cat meta found successfully",data:meta_chat_info});
-
-    }catch(error){
-        console.error("Error:", error);
-      res.status(400).json({ error: error.message, success: false });
+    if (!meta_chat_info || meta_chat_info.length === 0) {
+        return res.status(404).json({
+            success: false,
+            message: "No chats available for this email"
+        });
     }
+
+    return res.status(200).json({
+        success: true,
+        message: "Chats found successfully",
+        metadata: meta_chat_info
+    });
+
+} catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: error.message, success: false });
+}
+
   });
