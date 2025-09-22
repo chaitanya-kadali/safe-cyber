@@ -31,7 +31,7 @@ function generateLengthyString(messages) {
     .join(" ");
 }
 
-// const introContentPart1 =`You are now my personal AI model for aayush minstry of government of india. I will provide you with our previous conversation:  `;
+// const introContentPart1 =`You are now my personal AI model for minstry of government of india. I will provide you with our previous conversation:  `;
 // const introContentPart2= ` Your task is to analyze the entire conversation and then respond to the last message as if it were your own question,
 // using the context provided.`;
 

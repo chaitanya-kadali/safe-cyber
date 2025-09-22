@@ -5,7 +5,7 @@ function AboutUs() {
   return (
     <div className="meditation-timer-page">
       <header className="hero-section">
-        <h1>🌿 Ayush Ecosystem</h1>
+        <h1>🌿 Ecosystem</h1>
         <p>A Huge Ecosystem with Advanced features </p>
       </header>
 
@@ -179,7 +179,7 @@ function AboutUs() {
           <div className="feature-card">
             <h3>🌍 Self-Sustainable Ecosystem</h3>
             <p>
-              Dashboards that connect Ayurvedic startups with nearby farmers and
+              Dashboards that connect  startups with nearby farmers and
               doctors for raw materials and product distribution.{" "}
             </p>
           </div>
@@ -215,7 +215,7 @@ function AboutUs() {
 
       <footer className="footer-abt">
         <p>
-          🚀 Join us in embracing the Ecosystem of ayush to embrace the ayush
+          🚀 Join us in embracing the Ecosystem of to embrace the 
           startups
         </p>
       </footer>

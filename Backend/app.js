@@ -19,7 +19,7 @@ const metachat=require("./routes/metaChatRoute");
 const app = express();
 
 // List of allowed origins
-const allowedOrigins = ["https://safecyber.vercel.app"];
+const allowedOrigins = ["https://safecyber.vercel.app" ,"https://safecyber.chaitanyaworks.com/",`http://localhost:${process.env.FRONT_LOC}/`];
 
 // // Dynamic origin function
 // const corsOptions = {
