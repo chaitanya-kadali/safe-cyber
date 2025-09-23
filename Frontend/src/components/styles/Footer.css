@@ -3,12 +3,13 @@
   /* background-color: #12514b; */
   background-color: rgba(236, 234, 234, 0.71);
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-  height: 15vh;
+  height: 5vh;
   color: rgb(0, 0, 0);
   font-size: 1.3rem;
+  margin-top: 40px;
 }
 #footer-description {
-  padding-top: 30px;
+  padding-top: 80px;
 }
 @media (max-width: 768px) {
   #footer-description {

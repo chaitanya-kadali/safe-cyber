@@ -2,13 +2,13 @@ import Homecomp from "./Homecomp";
 import ContentSensor from "./ContentSensor";
 import Misinfo from "./Misinfo";
 import AiChatBot from "./AiChatBot";
-import GroupChat from "./GroupChat";
 import ComplaintPortal from "./ComplaintPortal";
 import { useState } from "react";
 import '../styles/Hero.css'
 import Trending from "./Trending";
 import Logout from "../Separate Comps/Logout";
 import SocialMedia from "./SocialMedia";
+import MotherChat from "./MotherChat";
 function Hero({email}) {
   // const [tab,setTab]=useState(0);
   let flag=true;
@@ -38,7 +38,7 @@ function Hero({email}) {
       componentToDisplay = <Trending/>;
       break;
     case 5:
-      componentToDisplay = <GroupChat email={email}/>;
+      componentToDisplay = <MotherChat email={email}/>;
       break;
     case 6:
         componentToDisplay = <AiChatBot />;  
@@ -72,7 +72,7 @@ function Hero({email}) {
         }
       </div>
       </div>
-      <div>
+      <div style={{height:"70vh"}}>
         
      {componentToDisplay}
       </div>   

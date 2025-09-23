@@ -10,21 +10,20 @@ import ChatBox from './ChatBox';
 // import EmptyChat from './EmptyChat';
 
 const Component = styled(Box)`
+    height : "100%";
     display: flex;
 `;
     
 const LeftComponent = styled(Box)`
-    min-width: 450px;
-    max-height: 60vh;
+    min-width: 350px;
 `;
     
 const RightComponent = styled(Box)`
-    width: 73%;
+    width: 80%;
     min-width: 300px;
-    height: 100%;
-    max-height: 60vh;
-    border-left: 1px solid rgba(0, 0, 0, 0.14);
-     overflow: scroll;
+    border-left: 1px solid rgba(0, 0, 0, 0.39);
+     overflow-y: scroll;
+    height:100%;
 `;
 
 const ChatDialog = (props) => {

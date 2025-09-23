@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../styles/GroupChat.css'
 // import TotalChat from './GroupChat/TotalChat';
 import ChatDialog from './GroupChat/ChatDailoge';
-function GroupChat({email}) {
+function MotherChat({email}) {
     let flag=true;
     if(email)
     {
@@ -15,7 +15,7 @@ function GroupChat({email}) {
         window.location.href='/register';
       }
   return (
-    <div>
+    <div style={{height:"80vh"}}>
     {flag && (
         <div className="login-prompt">
           <div className="login-box">
@@ -33,4 +33,4 @@ function GroupChat({email}) {
       </div>
   )
 }
-export default GroupChat;
+export default MotherChat;

@@ -18,7 +18,7 @@ const sendEmailFunc = async (req, res) => {
     let mailOptions = {
       from: "rockstarshankar0@gmail.com", // Sender address
       to: email, // Receiver address
-      subject: "Email from SafeCyber by Team OG Coders", // Subject line
+      subject: "Email from SafeCyber by chaitanya kadali", // Subject line
       text: message, // Plain text body
     };
 
