@@ -1,13 +1,15 @@
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Box, styled } from "@mui/material";
 import axios from "axios";
-// import { io } from 'socket.io-client';
 
 //components
 import Message from "./Message";
 import Footer from "./Footer";
-import { backURL } from "../../../utils/forall";
+import { backURL, getConversationMessage } from "../../../utils/forall";
+import { emitChat, listenChat } from "../../../utils/socket";
 
+
+// {
 const Wrapper = styled(Box)`
   background-image: url(${"https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png"});
   background-size: 50%;
@@ -30,11 +32,13 @@ const Container = styled(Box)`
   padding: 1px 80px;
 `;
 
+// }
+
 const Messages = ({email, clickedMetaChat}) => {
   const [value, setValue] = useState("");
   const [file, setFile] = useState();
   const [image, setImage] = useState(null);
-  const [allMsgsofChat, setallMsgsofChat] = useState();
+  const [allMsgsofChat, setallMsgsofChat] = useState([]);
 
   const scrollRef = useRef();
 
@@ -55,27 +59,14 @@ const Messages = ({email, clickedMetaChat}) => {
     }, [clickedMetaChat , allMsgsofChat]);
 
     
-    const getConversationMessage = async() => {
-      console.log("get convo is colled msg.jsx ---------------------------");
-   try{
-       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedMetaChat.chat_id}).then(res=>{
-          if(res.data.success){
-            // console.log("conversation.jsx : const messages -> ",res.data.msgs)
-            setallMsgsofChat(res.data.msgs)
-
-          }else{
-              alert("Error : to retrieve getmsg");
-          }
-            })                    
-      }
-      catch(error){
-          console.log('Error getting msgs ',error);
-      }
-}
 
 useEffect(() => {
-   getConversationMessage();
-}, [clickedMetaChat]);
+   getConversationMessage(clickedMetaChat.chat_id,setallMsgsofChat);
+}, [clickedMetaChat]); // we can add sockets here
+
+useEffect( ()=>{
+    listenChat(setallMsgsofChat,allMsgsofChat,clickedMetaChat.chat_id);
+})
 
 const censorText =async(text)=>{
   try{
@@ -142,13 +133,16 @@ const sendText = async (e) => {
                         }
                           })
                     // reload
-                        await getConversationMessage();  
+                    // STOPPING this getmsgs() so that we COMPLETELY BASE on sockets..
+                    //  until you go to some one else chat and come back to this chat to FORCE reload from db
+                        // await getConversationMessage(clickedMetaChat.chat_id, setallMsgsofChat);      
                   }catch(error){
                       console.log('Error sending registration request',error);
                   }
           }
 
           console.log("below ref");
+      emitChat(message,clickedMetaChat.chat_id); // call socket before posting msg to db.. to INCREASE speed
       postMsg();
       setValue("");
       setFile();
@@ -160,8 +154,8 @@ const sendText = async (e) => {
     <Wrapper>
       <Component>
         {allMsgsofChat &&
-          allMsgsofChat.map((message) => (
-            <Container ref={scrollRef}>
+          allMsgsofChat.map((message,index) => (
+            <Container ref={scrollRef} key={index}>
               <Message message={message} email={email} />
             </Container>
           ))}
