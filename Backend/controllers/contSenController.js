@@ -17,7 +17,7 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-const introContentPart1 = ` you are my backend api right now. the following message may contain badwords and cuss words. now i want you to replace all those bad words with *** and return the same statment exactly for me  `;
+const introContentPart1 = ` you are my backend api right now. the following message may contain badwords and cuss words. now i want you to replace all those bad words with **** and return the same statment exactly for me. make sure you remove bad/cuss words from telugu hindi tamil and other prominent indian languages too.. no bad word from any indian language is allowed.. only remove the words which are cuss/bad words.. dont remove the non cuss words keep them as it is  `;
 const introContentPart2 = `note : dont put any generic intros like "sure i can do this for you etc" just give out the raw statement as i gave you. if you could not able find out any bad word. just return the exact statement just i gave you        data ->             `;
 
 exports.contControl = async (req, res) => {

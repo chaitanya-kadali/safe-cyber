@@ -58,7 +58,7 @@ const Messages = ({email, clickedMetaChat}) => {
     const getConversationMessage = async() => {
       console.log("get convo is colled msg.jsx ---------------------------");
    try{
-       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedMetaChat}).then(res=>{
+       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedMetaChat.chat_id}).then(res=>{
           if(res.data.success){
             // console.log("conversation.jsx : const messages -> ",res.data.msgs)
             setallMsgsofChat(res.data.msgs)
@@ -108,6 +108,7 @@ const sendText = async (e) => {
 
     let text=value;
     try{
+      console.log("doing censor ");
       text = await censorText(text);
     }catch(e){
       console.log("at sendtext failed to censor it: ",e);
@@ -116,8 +117,8 @@ const sendText = async (e) => {
             let message = {};
             if (!file) {
               message= {  
-                    chat_id :clickedMetaChat ,
-                    chat_name:allMsgsofChat[0]?.chat_name,
+                    chat_id :clickedMetaChat.chat_id ,
+                    chat_name:clickedMetaChat.chat_name,
                     sentemail: email,  
                     mdata:text
                   }
@@ -125,7 +126,7 @@ const sendText = async (e) => {
                 message = {
                     text: image,
                     chat_id :clickedMetaChat ,
-                    chat_name:allMsgsofChat[0]?.chat_name,
+                    chat_name:clickedMetaChat.chat_name,
                     sentemail: email,   
                     mdata:value
                 };
