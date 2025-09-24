@@ -52,7 +52,7 @@ const Messages = ({email, clickedMetaChat}) => {
 
     useEffect(() => {
       scrollRef.current?.scrollIntoView({ transition: "smooth" });
-    }, [clickedMetaChat]);
+    }, [clickedMetaChat , allMsgsofChat]);
 
     
     const getConversationMessage = async() => {

@@ -40,10 +40,11 @@ const CreateChatButton = ({ email }) => {
     };
 
     const handleSubmit = async () => {
-        setEmails([...emails, email]); // adding creator-email too
+        const sen_partic = [...emails, email]; // adding creator-email too
+
         const payload = {
             chat_name :chatName,
-            participants : emails, // array
+            participants : sen_partic, // array
         };
 
         try{

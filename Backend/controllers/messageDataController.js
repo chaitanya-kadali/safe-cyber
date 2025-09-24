@@ -1,46 +1,46 @@
 const catchAsyncErrors = require("../middleware/catchAsyncErrors"); // Assuming this is a custom error handling middleware
 const messagedata = require("../models/messageDataModel"); // GroupChat model
 const user = require("../models/usermodel");
-// import axios from 'axios';
+const axios = require("axios");
 // import { notify } from '../app';
 
-const censorIt =async(msgData)=>{
-  try{
+// const censorIt =async(msgData)=>{
+//   try{
 
-      const response = await fetch(
-        "https://safecyber-api.onrender.com/api/contsensor-text",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            tdata: msgData,
-          }),
-        }
-      );
+//       const response = await fetch(
+//         "https://safecyber-api.onrender.com/api/contsensor-text",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({
+//             tdata: msgData,
+//           }),
+//         }
+//       );
 
-      const data = await response.json();
-      if(data.success)
-        {
-        //    setSdata(data.sdata);
+//       const data = await response.json();
+//       if(data.success)
+//         {
+//         //    setSdata(data.sdata);
   
-        return data.sdata;
-        }
-   return msgData;
-  }catch(e)
-  {
-   console.log(e);
-   return msgData;
-  }
-  return msgData;
-}
+//         return data.sdata;
+//         }
+//    return msgData;
+//   }catch(e)
+//   {
+//    console.log(e);
+//    return msgData;
+//   }
+//   return msgData;
+// }
 
 const notify =async(obj)=>{
   try{
-    const sendMsg = { message:`New message from cyber safe: ${obj}` };
+    const sendMsg = { email:obj.sentemail, message:`New message from cyber safe: ${obj.chat_name}` };
     console.log(" complaint obj : ", sendMsg);
-       await axios.post('https://safecyber-api.onrender.com/api/send-email',sendMsg).then(res=>{
+       await axios.post('https://safe-cyber.onrender.com/api/send-email',sendMsg).then(res=>{
           if(res.data.success){
       
           console.log("successfully pushed/uploaded the msg")
@@ -52,7 +52,7 @@ const notify =async(obj)=>{
            
     }
     catch(error){
-        console.log('Error sending registration request',error);
+        console.log('Error sending registration request hereeee catch error',error);
     }
 }
 

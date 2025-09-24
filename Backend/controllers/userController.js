@@ -56,7 +56,7 @@ exports.userLogin = catchAsyncErrors(async (req, res) => {
 
       return res
         .status(202)
-        .json({ success: false, message: "Invalid Email_ID or password." });
+        .json({ success: false, message: "Email_ID not found" });
     }
 
     // Check if user is banned
@@ -179,7 +179,11 @@ exports.getProfileImage = async (req, res) => {
 
     const user = await User.findOne({ email });
 
-    if (!user || !user.profile_image_id) {
+    if (!user){
+       return res.status(404).json({ message: "Email not found" });
+    } 
+      
+      if( !user.profile_image_id) {
       return res.status(404).json({ message: "Profile image not found" });
     }
 
