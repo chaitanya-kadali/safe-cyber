@@ -30,7 +30,7 @@ const Container = styled(Box)`
   padding: 1px 80px;
 `;
 
-const Messages = ({email, clickedchatId}) => {
+const Messages = ({email, clickedMetaChat}) => {
   const [value, setValue] = useState("");
   const [file, setFile] = useState();
   const [image, setImage] = useState(null);
@@ -52,13 +52,13 @@ const Messages = ({email, clickedchatId}) => {
 
     useEffect(() => {
       scrollRef.current?.scrollIntoView({ transition: "smooth" });
-    }, [clickedchatId]);
+    }, [clickedMetaChat]);
 
     
     const getConversationMessage = async() => {
       console.log("get convo is colled msg.jsx ---------------------------");
    try{
-       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedchatId}).then(res=>{
+       await axios.post(`${backURL}/api/getmsg`,{chat_id: clickedMetaChat}).then(res=>{
           if(res.data.success){
             // console.log("conversation.jsx : const messages -> ",res.data.msgs)
             setallMsgsofChat(res.data.msgs)
@@ -75,7 +75,7 @@ const Messages = ({email, clickedchatId}) => {
 
 useEffect(() => {
    getConversationMessage();
-}, [clickedchatId]);
+}, [clickedMetaChat]);
 
 const censorText =async(text)=>{
   try{
@@ -116,7 +116,7 @@ const sendText = async (e) => {
             let message = {};
             if (!file) {
               message= {  
-                    chat_id :clickedchatId ,
+                    chat_id :clickedMetaChat ,
                     chat_name:allMsgsofChat[0]?.chat_name,
                     sentemail: email,  
                     mdata:text
@@ -124,7 +124,7 @@ const sendText = async (e) => {
             } else {
                 message = {
                     text: image,
-                    chat_id :clickedchatId ,
+                    chat_id :clickedMetaChat ,
                     chat_name:allMsgsofChat[0]?.chat_name,
                     sentemail: email,   
                     mdata:value

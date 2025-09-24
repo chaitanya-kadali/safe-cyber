@@ -8,7 +8,7 @@ const Menu = (props) => {
         <Box>
             <HeaderMenu />
             <Conversations email={props.email} 
-            setclickedchatId={props.setclickedchatId} />
+            setclickedMetaChat={props.setclickedMetaChat} />
         </Box>
     )
 }

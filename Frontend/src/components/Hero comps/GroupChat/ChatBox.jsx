@@ -21,11 +21,15 @@ const ChatBox = (props) => {
   const [conversation, setConversation] = useState({});
   return (
     <div style={stylediv}>  
-   {props.clickedchatId === -1 ? 
-   <div style={{paddingTop:"10vh"}} > welcome to Safe Chat <br/> select the chat to get started </div> :
+   {props.clickedMetaChat.chat_id === -1 ? 
+   <div style={{  backgroundColor:"rgba(194, 194, 194, 1)", display:"flex" ,alignItems:"center", justifyContent:"center" ,flexDirection:"column", height:"100%" }} > 
+   <p style={{fontSize:"40px"}}> Welcome to Safe Chat  </p>
+    <p style={{fontSize:"30px"}}> <br/> Select the chat to get started  </p> 
+   
+   </div> :
     <RightComponent>
-      <ChatHeader email={props.email} clickedchatId={props.clickedchatId}  />
-      <Messages  email={props.email}  clickedchatId={props.clickedchatId}  />
+      <ChatHeader email={props.email} clickedMetaChat={props.clickedMetaChat}  />
+      <Messages  email={props.email}  clickedMetaChat={props.clickedMetaChat}  />
     </RightComponent>
     
    }

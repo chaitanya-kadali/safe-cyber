@@ -21,7 +21,7 @@ const StyledDivider = styled(Divider)`
 `;
 
 const Conversations = (props) => {  // once text
-    const [chats, setChats] = useState([{chat_id:-6, 
+    const [chats, setChats] = useState([{chat_id:-1, 
                                         chat_name: "not load",
                                         participants : ["each part"]
                                          }
@@ -84,8 +84,8 @@ const Conversations = (props) => {  // once text
         {
                     chats && chats.map((obj, index) => (
                 <React.Fragment key={index}>
-                    <Conversation chat_id={obj.chat_id} chat_name={obj.chat_name}
-                    setclickedchatId={props.setclickedchatId}   />
+                    <Conversation chat_id={obj.chat_id} chat_name={obj.chat_name} particularMetachat = {obj}
+                    setclickedMetaChat={props.setclickedMetaChat}   />
 
                     {chats.length !== (index + 1) && <StyledDivider />}
                 </React.Fragment>

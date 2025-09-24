@@ -29,16 +29,20 @@ const RightComponent = styled(Box)`
 const ChatDialog = (props) => {
 
     // const { person } = useContext(UserContext);
-    const [clickedchatId, setclickedchatId] = useState(-1);
+    const [clickedMetaChat, setclickedMetaChat] = useState({
+                                        chat_id: -1,
+                                        chat_name: "Not selected",
+                                        participants : ["no participants"] // Array of participant emails
+                                        });
     return (
        
             <Component>
                 <LeftComponent>
-                    <Menu email={props.email} setclickedchatId ={setclickedchatId} />
+                    <Menu email={props.email} setclickedMetaChat ={setclickedMetaChat} />
                 </LeftComponent>
                 <RightComponent>
                     
-                     <ChatBox email={props.email} clickedchatId={clickedchatId} />
+                     <ChatBox email={props.email} clickedMetaChat={clickedMetaChat} />
                     
                 </RightComponent>
             </Component>

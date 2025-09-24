@@ -48,7 +48,7 @@ const Conversation = (props) => {  // once user
     const [lastMessage, setMessage] = useState();
 
     const getChat = async () => {
-        props.setclickedchatId(props.chat_id);
+        props.setclickedMetaChat(props.particularMetachat);
     }
 
     return (
