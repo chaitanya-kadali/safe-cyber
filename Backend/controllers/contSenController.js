@@ -6,7 +6,7 @@ const { boolean } = require("joi");
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
+  model: "gemini-2.5-pro",
 });
 
 const generationConfig = {
@@ -23,6 +23,8 @@ const introContentPart2 = `note : dont put any generic intros like "sure i can d
 exports.contControl = async (req, res) => {
   try {
     const { tdata } = req.body;
+    console.log("heyb se  ", tdata);
+    
     const chatSession = model.startChat({
       generationConfig,
 
@@ -35,6 +37,8 @@ exports.contControl = async (req, res) => {
     
     const sensd = result.response.text();
     // const boolv = (sensd !== tdata) ? true :false; 
+    console.log("\n\n\n\n   uuuyyyy ", sensd);
+    
     return res
       .status(200)
       .json({ success:true, sdata: sensd , sensored: true,given:tdata }); // making sens true for temprry
