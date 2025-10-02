@@ -58,75 +58,66 @@ function Homecomp({sendData}) {
         "Yes, the architecture is designed to scale seamlessly, handling high volumes of content efficiently for platforms of any size.",
     },
   ];
+
+  const features = [
+       {
+        id: 2,
+      title : "Abuse Censor",
+      matter:  "To filter out toxic text and images",
+      imgname : "abusecensor.jpg"
+    },
+     {
+        id: 3,
+      title : "Fact Check",
+      matter: "To Check spreading info is real or fake",
+       imgname : "fact1.png"
+    },
+      {
+        id: 4,
+      title : "Trending",
+      matter: "To check what's trending",
+      imgname : "trend.jpg", 
+    },
+      {
+        id: 5,
+      title : "Safe Chat",
+      matter: "To Chat with people in groups without abuse words",
+      imgname : "group.jpg",
+    },
+      {
+        id: 6,
+      title : "AI Chatbot",
+      matter: "To get assistance of gemini chat bot",
+      imgname : "chatbot.jpg",
+    },
+      {
+        id: 7,
+      title : "Complaint portal",
+      matter: "To file a complaint to cybercrime office",
+      imgname : "complaint.jpg",
+    },
+  ]
   return (
     <div className="homes-main">
       <Images />
       <div className="home-faq">
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Abuse Censor</h3>
-         <div className="home-censor-tdiv">
-         <p>To filter out toxic text and images</p><p className="home-censor-btn" onClick={()=>{sendData(2)}}>Click here</p>
-         </div>
-        </div>
-        <div className="home-censor-img">
-        </div>
-        </div>
 
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Fact Check</h3>
-         <div className="home-censor-tdiv">
-         <p>To Check spreading info is real or fake</p><p className="home-censor-btn" onClick={()=>{sendData(3)}}>Click here</p>
-         </div>
+        {features.map((item, index) => (
+          
+          <div key={index} className="home-censor">
+            <div className="home-censor-text">
+            <h3> { item.title } </h3>
+            <div className="home-censor-tdiv">
+            <p> {item.matter} </p><p className="home-censor-btn" onClick={()=>{sendData( item.id )}}>Click here</p>
+            </div>
+            </div>
+            <div className="home-feat-img" style={{ backgroundImage: `url(assets/${item.imgname})` }}  >
+            </div>
         </div>
-        <div className="home-fact-img">
-        </div>
-        </div>
+      ))}
 
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Trending</h3>
-         <div className="home-censor-tdiv">
-         <p>To check what's trending</p><p className="home-censor-btn" onClick={()=>{sendData(4)}}>Click here</p>
-         </div>
-        </div>
-        <div className="home-trend-img">
-        </div>
-        </div>
-
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Group Chat</h3>
-         <div className="home-censor-tdiv">
-         <p>To Chat with people in groups without abuse words </p><p className="home-censor-btn" onClick={()=>{sendData(5)}}>Click here</p>
-         </div>
-        </div>
-        <div className="home-group-img">
-        </div>
-        </div>
-
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Gemini Chatbot</h3>
-         <div className="home-censor-tdiv">
-         <p>To get assistance of gemini chat bot</p><p className="home-censor-btn" onClick={()=>{sendData(6)}}>Click here</p>
-         </div>
-        </div>
-        <div className="home-chat-img">
-        </div>
-        </div>
-
-        <div className="home-censor">
-        <div className="home-censor-text">
-         <h3>Complaint portal</h3>
-         <div className="home-censor-tdiv">
-         <p>To file a complaint to cybercrime office</p><p className="home-censor-btn" onClick={()=>{sendData(7)}}>Click here</p>
-         </div>
-        </div>
-        <div className="home-censor-img">
-        </div>
-        </div>
+        
+        
         <FAQ faqdata={CyberFaqData} who={"Cyberbullying"} />
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 // Import your local images
-import Image1 from "../../assets/bannerpic2.jpg";
-import Image2 from "../../assets/bannerpic3.jpg";
-import Image3 from "../../assets/bannerpic5.jpg";
+import Image1 from "/assets/bannerpic2.jpg";
+import Image2 from "/assets/bannerpic3.jpg";
+import Image3 from "/assets/bannerpic5.jpg";
 import "../styles/Images.css";
 // import "../components/styles/Images.css";
 

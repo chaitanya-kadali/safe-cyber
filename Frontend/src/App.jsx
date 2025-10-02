@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login.jsx";
 import Main from "./components/Main.jsx";
 import AiChatBot from "./components/Hero comps/AiChatBot.jsx";
-import AboutUs from "./components/Separate Comps/AboutUs.jsx";
-import Header from "./components/Header.jsx";
 import Register from "./components/Register.jsx";
 import YourProfile from "./components/YourProfie.jsx";
 function App() {
@@ -16,15 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<YourProfile />} />
           <Route path="/chatbot" element={<AiChatBot />} />
-          <Route
-            path="/aboutus"
-            element={
-              <div>
-                {" "}
-                <Header /> <AboutUs />{" "}
-              </div>
-            }
-          />
+          
         </Routes>
       </BrowserRouter>
     </>

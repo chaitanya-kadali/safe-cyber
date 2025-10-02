@@ -1,12 +1,4 @@
-.home-censor-img
-{
-    background-image: url('../../assets/abusecensor.jpg');
-
-}
-.home-fact-img{
-    background-image: url('../../assets/fact1.png');
-}
-.home-censor-img,.home-fact-img,.home-trend-img,.home-group-img,.home-chat-img{
+.home-feat-img{
     
     height:100px;
     background-size: cover;
@@ -16,18 +8,12 @@
   border-radius: 5px;
   margin-right:15px;
 }
-.home-trend-img{
-    background-image: url('../../assets/trend.jpg');
-}
-.home-group-img{
-    background-image: url('../../assets/group.jpg');
-} 
+
+
 .home-censor-text h3{
     margin-bottom: 0px;
 }
-.home-chat-img{
-    background-image: url('../../assets/chatbot.jpg');
-}
+
 .home-censor{
     /* border:2px solid black; */
     display:flex;
@@ -63,4 +49,11 @@
 
 .home-censor-btn:hover {
     background-color: darkgreen;
+}
+
+
+.homes-main {
+    display: flex;
+     flex: 1;               /* take remaining space, push footer down */
+  flex-direction: column;
 }

@@ -9,6 +9,7 @@ import Trending from "./Trending";
 import Logout from "../Separate Comps/Logout";
 import SocialMedia from "./SocialMedia";
 import MotherChat from "./MotherChat";
+import Footer from "../Footer";
 function Hero({email}) {
   // const [tab,setTab]=useState(0);
   let flag=true;
@@ -72,9 +73,9 @@ function Hero({email}) {
         }
       </div>
       </div>
-      <div style={{height:"70vh"}}>
-        
+      <div>
      {componentToDisplay}
+     <Footer />
       </div>   
     </div>
   );
