@@ -87,8 +87,11 @@ function Misinfo() {
             <p className="para5-misinfo">Source: {source}</p>
           </div>
         )}
+        <p className="pnote">  <b> Disclaimer : </b> Please check for quiries which are occured before or during 2023. <br> 
+        </br>  this model not yet connected to google search api </p>
+   
       </div>
-    </div>
+       </div>
   );
 }
 

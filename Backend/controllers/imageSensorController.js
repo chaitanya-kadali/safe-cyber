@@ -4,7 +4,7 @@ require("dotenv").config(); // Load API key from .env file
 
 // Initialize Gemini API with your API key
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
 // Function to process uploaded image and extract text
 exports.ImageContentSensor = async (req, res) => {

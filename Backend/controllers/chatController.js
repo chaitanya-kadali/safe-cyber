@@ -11,7 +11,7 @@ const {
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
+  model: "gemini-2.5-pro",
 });
 
 const generationConfig = {
@@ -72,7 +72,7 @@ exports.chatControl = async (req, res) => {
 // Function to check if the news is fake or real
 exports.checkFakeNews = async (req, res) => {
   try {
-    const introContentPart3 = `You are now tasked with determining if the following news content is fake or real. Analyze the content and provide a detailed explanation why the news is fake, along with a credibility score (as a percentage) and the source of the news ins the json format.`;
+    const introContentPart3 = `You are now tasked with determining if the following news content is fake or real. Analyze the content and provide a detailed explanation why the news is fake, along with a credibility score (as a percentage) and the source of the news ins the json format. refer to the latest availabe news in the online.. search for the content in the online . take your own time but refer to most up to date online source not older ones.. use the google search api to get the info `;
 
     const { newsContent } = req.body; // The content of the news to check
     const chatSession = model.startChat({
@@ -143,6 +143,7 @@ exports.checkFakeNews = async (req, res) => {
       error: error.response
         ? error.response.data
         : "There was an issue on the server",
+      error_det : error,
     });
   }
 };

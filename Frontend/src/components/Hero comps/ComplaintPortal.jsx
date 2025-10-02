@@ -35,13 +35,15 @@ export default function ComplaintPortal({email}) {
           // let fiteredData = data.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
           // setUsers(fiteredData);
           try{
-            const sendMsg = {email:"devavatturi@gmail.com", message:`the user email id : ${email} \n complaint: ${inputValue}` };
+            const sendMsg = {email:" charankadaliaa@gmail.com", message:`the user email id : ${email} \n complaint: ${inputValue}` };
             console.log(" complaint obj : ", sendMsg);
                await axios.post(`${backURL}/api/send-email`,sendMsg).then(res=>{
                   if(res.data.success){
               
-                  console.log("successfully pushed/uploaded the msg")
-                  }else{
+                  console.log("successfully pushed/uploaded the msg");
+                  alert("message sent to cybercrime representative : i.e chaitanya-kadali")
+                  setInputValue("");  
+                }else{
                     alert("Error : to push msg  ");
                   }
                     })
